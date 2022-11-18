@@ -1,4 +1,3 @@
-import { version } from '../package.json'
 import type { Agent, Command } from './agents'
 import { AGENTS } from './agents'
 import { exclude } from './utils'
@@ -23,12 +22,6 @@ export function getCommand(
 }
 
 export const parseNi = <Runner>((agent, args, ctx) => {
-  if (args.length === 1 && args[0] === '-v') {
-    // eslint-disable-next-line no-console
-    console.log(`@vtrbo/ni v${version}`)
-    process.exit(0)
-  }
-
   // bun use `-d` instead of `-D`, #90
   if (agent === 'bun')
     args = args.map(i => i === '-D' ? '-d' : i)
